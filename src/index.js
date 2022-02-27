@@ -1,11 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
+import Started from 'routes/started'
+import Visualizer from 'routes/visualizer'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById('root')
+
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="start" element={<Started />} />
+        <Route path="visualizer" element={<Visualizer />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  rootElement
 )
