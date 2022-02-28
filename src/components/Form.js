@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
   const {
     register,
-    handleSubmit,
+    // handleSubmit,
     watch,
     formState: { errors },
   } = useForm({
@@ -13,28 +13,12 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
     },
   })
 
-  // const onSubmit = (data) => {
-  //   console.log(data)
-  // }
-
-  console.log(watch()) // Watch globally the input object.
-
   const token = watch('token') //Watch specific input values.
 
   const series = watch('series') //Watch specific input values.
 
-  console.log('This is my token', token)
-
-  console.log('These are my series', series)
-
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-
-    <form
-      className="border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg"
-      // onSubmit={onSubmit}
-    >
-      {/* register your input into the hook by invoking the "register" function */}
+    <form className="border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg">
       <label
         className="block text-gray-700 text-md font-semibold mb-1"
         htmlFor="token"
@@ -51,9 +35,7 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
         onChange={onTokenChange}
       />
       <p className="text-red-400">{errors.token?.message}</p>
-      {/* {errors.exampleRequired && <span>This field is required</span>} */}
 
-      {/* include validation with required or other standard HTML validation rules */}
       <label
         className="block text-gray-700 text-md font-semibold mb-1"
         htmlFor="series"
@@ -71,8 +53,6 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
         onChange={onSeriesChange}
       />
       <p className="text-red-400">{errors.series?.message}</p>
-      {/* errors will return when field validation fails  */}
-      {/* {errors.exampleRequired && <span>This field is required</span>} */}
 
       <input
         className="px-3 py-1 w-24 cursor-pointer mt-4 border-sky-700 text-white bg-sky-700 font-semibold rounded-md"

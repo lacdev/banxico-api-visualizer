@@ -3,9 +3,7 @@ import { Outlet, Link } from 'react-router-dom'
 function App() {
   return (
     <div className="m-auto">
-      <h1 className="font-semibold text-4xl">
-        Banxico data <span className="font-bold text-sky-700">visualizer</span>
-      </h1>
+      <h1 className="font-semibold text-4xl">Banxico data visualizer</h1>
       <nav className="border-b-4 pb-1 border-sky-700">
         <Link className="text-2xl" to="/start">
           Get Started
