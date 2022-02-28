@@ -2,7 +2,7 @@ import { Outlet, Link } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
+    <div className="m-auto">
       <h1 className="font-semibold text-4xl">
         Banxico data <span className="font-bold text-sky-700">visualizer</span>
       </h1>

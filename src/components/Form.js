@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-export const Form = () => {
+export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -13,7 +13,9 @@ export const Form = () => {
     },
   })
 
-  const onSubmit = (data) => console.log(data)
+  // const onSubmit = (data) => {
+  //   console.log(data)
+  // }
 
   console.log(watch()) // Watch globally the input object.
 
@@ -30,7 +32,7 @@ export const Form = () => {
 
     <form
       className="border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg"
-      onSubmit={handleSubmit(onSubmit)}
+      // onSubmit={onSubmit}
     >
       {/* register your input into the hook by invoking the "register" function */}
       <label
@@ -46,6 +48,7 @@ export const Form = () => {
           required: 'A valid banxico token is required.',
         })}
         placeholder="a6279286a585cb47fdf7b721211477..."
+        onChange={onTokenChange}
       />
       <p className="text-red-400">{errors.token?.message}</p>
       {/* {errors.exampleRequired && <span>This field is required</span>} */}
@@ -65,6 +68,7 @@ export const Form = () => {
             'Valid series for data fetching are required. Each serie needs to be comma separated. ',
         })}
         placeholder={`SF61745,SP68257`}
+        onChange={onSeriesChange}
       />
       <p className="text-red-400">{errors.series?.message}</p>
       {/* errors will return when field validation fails  */}
@@ -74,6 +78,7 @@ export const Form = () => {
         className="px-3 py-1 w-24 cursor-pointer mt-4 border-sky-700 text-white bg-sky-700 font-semibold rounded-md"
         type="submit"
         value={'Fetch'}
+        onClick={onSubmit}
       />
     </form>
   )
