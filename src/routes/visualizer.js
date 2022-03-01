@@ -1,8 +1,8 @@
-import { getSeries } from 'services/series'
 import { useState } from 'react'
-import { Form } from 'components/Form'
+import { getSeries } from 'services/series'
 import { SeriesContainer } from 'components/SeriesContainer'
-import { ChartLine } from 'components/LineChartJs'
+import { ChartLine } from 'components/LineChart'
+import { Form } from 'components/Form'
 
 export default function Visualizer() {
   const [banxicoToken, setBanxicoToken] = useState('')
@@ -10,8 +10,6 @@ export default function Visualizer() {
   const [seriesData, setSeriesData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
-
-  // console.log('token and series', banxicoToken, seriesToFetch)
 
   const classes = {
     errorMessage:
@@ -32,8 +30,6 @@ export default function Visualizer() {
     }
   }
 
-  console.log('Series updated?', seriesData)
-
   const handleTokenChange = (event) => setBanxicoToken(event.target.value)
 
   const handleSeriesChange = (event) => setSeriesToFetch(event.target.value)
@@ -46,7 +42,6 @@ export default function Visualizer() {
           onTokenChange={handleTokenChange}
           onSeriesChange={handleSeriesChange}
         />
-
         <div className={classes.errorMessage}>
           <p>Hubo un error al intentar buscar la información.</p>
           <p>
