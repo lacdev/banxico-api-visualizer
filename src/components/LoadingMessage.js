@@ -5,7 +5,7 @@ export const LoadingMessage = () => {
   }
   return (
     <div className={classes.loadingMessage}>
-      <p>Espera un momento en lo que buscamos la información por favor</p>
+      <p>Estamos buscando la información. Espera un momento.</p>
     </div>
   )
 }
