@@ -21,12 +21,17 @@ export default function Visualizer() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
+      setSeriesData([])
+      if (isError) {
+        setIsError(false)
+      }
       setIsLoading(true)
       const data = await getSeries(seriesToFetch, banxicoToken)
       setSeriesData(data?.bmx?.series)
       setIsLoading(false)
     } catch (e) {
       setIsError(true)
+      setIsLoading(false)
     }
   }
 
@@ -34,14 +39,14 @@ export default function Visualizer() {
 
   const handleSeriesChange = (event) => setSeriesToFetch(event.target.value)
 
-  if (!isLoading && isError) {
-    return (
-      <main className="pt-1">
-        <Form
-          onSubmit={handleSubmit}
-          onTokenChange={handleTokenChange}
-          onSeriesChange={handleSeriesChange}
-        />
+  return (
+    <main className="p-2">
+      <Form
+        onSubmit={handleSubmit}
+        onTokenChange={handleTokenChange}
+        onSeriesChange={handleSeriesChange}
+      />
+      {isError && (
         <div className={classes.errorMessage}>
           <p>Hubo un error al intentar buscar la información.</p>
           <p>
@@ -49,28 +54,18 @@ export default function Visualizer() {
             correcto.
           </p>
         </div>
-      </main>
-    )
-  }
-
-  return (
-    <main className="pt-1">
-      <Form
-        onSubmit={handleSubmit}
-        onTokenChange={handleTokenChange}
-        onSeriesChange={handleSeriesChange}
-      />
-      <SeriesContainer>
-        {isLoading ? (
-          <p className={classes.loadingMessage}>
-            Espera un momento en lo que buscamos la información por favor
-          </p>
-        ) : (
-          seriesData.map((data) => (
+      )}
+      {isLoading && !isError ? (
+        <p className={classes.loadingMessage}>
+          Espera un momento en lo que buscamos la información por favor
+        </p>
+      ) : (
+        <SeriesContainer>
+          {seriesData.map((data) => (
             <ChartLine key={data?.idSerie} data={data} />
-          ))
-        )}
-      </SeriesContainer>
+          ))}
+        </SeriesContainer>
+      )}
     </main>
   )
 }

@@ -21,7 +21,7 @@ export const ChartLine = ({ data }) => {
   }
 
   return (
-    <div className="m-4">
+    <div>
       <Bar
         data={dataConfig}
         height={400}
