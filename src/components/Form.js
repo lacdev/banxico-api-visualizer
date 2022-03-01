@@ -54,7 +54,7 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
           required:
             'Valid series for data fetching are required. Each serie needs to be comma separated. ',
         })}
-        placeholder={`SF61745,SP68257`}
+        placeholder={`SP74665,SF61745,SF60634,SF43773...`}
         onChange={onSeriesChange}
       />
       <p className={classes.errorMessage}>{errors.series?.message}</p>
