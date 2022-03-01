@@ -50,8 +50,8 @@ export default function Started() {
         </p>
 
         <p className={classes.note}>
-          Note: remember you need to separate your time series with a comma and
-          no spaces, otherwise an error will be shown instead of the data you
+          Note: remember to separate your time series with a comma and no spaces
+          in between, otherwise an error will be shown instead of the data you
           need.
         </p>
       </div>
