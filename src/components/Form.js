@@ -58,7 +58,7 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
       <p className="text-red-400">{errors.series?.message}</p>
 
       <input
-        className="px-3 py-1 w-24 cursor-pointer mt-4 border-sky-700 text-white bg-sky-700 font-semibold rounded-md"
+        className="px-3 py-1 w-24 cursor-pointer  border-sky-700 text-white bg-sky-700 font-semibold rounded-md"
         type="submit"
         value={'Fetch'}
         onClick={onSubmit}

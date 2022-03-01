@@ -6,7 +6,7 @@ export const ChartLine = ({ data }) => {
   console.log('Data in chart?', data)
 
   const dataConfig = {
-    labels: data?.datos.map((dato) => dato?.fecha),
+    labels: data?.datos?.map((dato) => dato?.fecha),
     datasets: [
       {
         label: data?.titulo,
@@ -15,7 +15,7 @@ export const ChartLine = ({ data }) => {
         borderWidth: 1,
         hoverBackgroundColor: 'rgb(40,149,250)',
         hoverBorderColor: 'rgb(40,149,250)',
-        data: data?.datos.map((dato) => dato.dato),
+        data: data?.datos.map((dato) => dato?.dato),
       },
     ],
   }
