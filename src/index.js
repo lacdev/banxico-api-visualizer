@@ -3,8 +3,8 @@ import { render } from 'react-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import App from './App'
-import Started from 'routes/Started'
-import Visualizer from 'routes/Visualizer'
+import Started from 'pages/Started'
+import Visualizer from 'pages/Visualizer'
 
 const rootElement = document.getElementById('root')
 
