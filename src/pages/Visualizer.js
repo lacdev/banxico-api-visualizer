@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { getSeries } from 'services/series'
 import { SeriesContainer } from 'components/SeriesContainer'
-// import { BarChart } from 'components/BarChart'
 import { LineChart } from 'components/LineChart'
 import { ErrorMessage } from 'components/ErrorMessage'
 import { LoadingMessage } from 'components/LoadingMessage'
@@ -57,7 +56,6 @@ export default function Visualizer() {
       ) : (
         <SeriesContainer>
           {seriesData.map((data) => (
-            // <BarChart key={data?.idSerie} data={data} /> //Pending BarChart conditional implementation.
             <LineChart key={data?.idSerie} data={data} />
           ))}
         </SeriesContainer>
