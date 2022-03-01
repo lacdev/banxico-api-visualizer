@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
   const {
     register,
-    // handleSubmit,
+    handleSubmit,
     watch,
     formState: { errors },
   } = useForm({
@@ -18,7 +18,10 @@ export const Form = ({ onTokenChange, onSeriesChange, onSubmit }) => {
   const series = watch('series') //Watch specific input values.
 
   return (
-    <form className="border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg">
+    <form
+      onSubmit={handleSubmit}
+      className="border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg"
+    >
       <label
         className="block text-gray-700 text-md font-semibold mb-1"
         htmlFor="token"

@@ -2,7 +2,7 @@ import { getSeries } from 'services/series'
 import { useState } from 'react'
 import { Form } from 'components/Form'
 import { SeriesContainer } from 'components/SeriesContainer'
-// import { SeriesGraph } from 'components/SeriesGraph'
+import { ChartLine } from 'components/LineChartJs'
 
 export default function Visualizer() {
   const [banxicoToken, setBanxicoToken] = useState('')
@@ -11,13 +11,13 @@ export default function Visualizer() {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
-  console.log('token and series', banxicoToken, seriesToFetch)
+  // console.log('token and series', banxicoToken, seriesToFetch)
 
   const classes = {
     errorMessage:
-      'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-sky-700 mt-4',
+      'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-sky-700 m-4',
     loadingMessage:
-      'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-sky-700 mt-4',
+      'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-sky-700 m-4',
   }
 
   const handleSubmit = async (event) => {
@@ -25,7 +25,7 @@ export default function Visualizer() {
       event.preventDefault()
       setIsLoading(true)
       const data = await getSeries(seriesToFetch, banxicoToken)
-      setSeriesData(data.bmx.series)
+      setSeriesData(data?.bmx?.series)
       setIsLoading(false)
     } catch (e) {
       setIsError(true)
@@ -72,10 +72,7 @@ export default function Visualizer() {
           </p>
         ) : (
           seriesData.map((data) => (
-            <div key={data.idSerie}>
-              <h1>{data.titulo}</h1>
-              <div>{data.datos.length}</div>
-            </div>
+            <ChartLine key={data?.idSerie} data={data} />
           ))
         )}
       </SeriesContainer>
