@@ -1,3 +1,3 @@
 # banxico-api-visualizer
 
-Banxico Data Visualizer made with Vega, React and Tailwind CSS.
+Banxico API Data Visualizer made with React, Tailwind CSS, Chart and Axios.
