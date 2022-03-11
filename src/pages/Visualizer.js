@@ -37,10 +37,15 @@ export default function Visualizer() {
     }
   }
 
-  const handleTokenChange = (event) => setBanxicoToken(event.target.value)
+  const handleTokenChange = (event) => {
+    let banxicoTokenText = event.target.value
+    setBanxicoToken(banxicoTokenText.replaceAll(' ', ''))
+  }
 
-  const handleSeriesChange = (event) => setSeriesToFetch(event.target.value)
-
+  const handleSeriesChange = (event) => {
+    let seriesText = event.target.value
+    setSeriesToFetch(seriesText.replaceAll(' ', ''))
+  }
   return (
     <main className="p-2">
       <Form
