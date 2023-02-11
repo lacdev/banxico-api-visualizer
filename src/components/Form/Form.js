@@ -1,38 +1,21 @@
 import clsx from 'clsx'
 
-import { getSeries } from 'api/seriesAPI'
+import { useBanxicoAppContext } from '../../hooks/useBanxicoAppContext'
 
-import { useBanxicoAppContext } from '../hooks/useBanxicoAppContext'
+import { useSeriesForm } from './hooks/useSeriesForm'
 
 export const Form = () => {
+  const { handleDataSubmit } = useBanxicoAppContext()
+
   const {
     banxicoToken,
     seriesToFetch,
     handleBanxicoTokenInputChange,
-    handleSeriesInputChange,
     handleBanxicoBlur,
+    handleSeriesInputChange,
     handleSeriesBlur,
-    handleDataSubmit,
-  } = useBanxicoAppContext()
-
-  const handleSubmit = async (event) => {
-    try {
-      event.preventDefault()
-
-      handleDataSubmit((prev) => ({ ...prev, isError: false, isLoading: true }))
-
-      const { data } = await getSeries(
-        seriesToFetch?.value,
-        banxicoToken?.value
-      )
-
-      handleDataSubmit((prev) => ({ ...prev, data: data?.bmx?.series }))
-    } catch {
-      handleDataSubmit((prev) => ({ ...prev, isError: true }))
-    } finally {
-      handleDataSubmit((prev) => ({ ...prev, isLoading: false }))
-    }
-  }
+    handleSubmit,
+  } = useSeriesForm({ onSubmit: handleDataSubmit })
 
   return (
     <form
