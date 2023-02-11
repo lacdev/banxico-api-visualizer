@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useCallback, useState } from 'react'
 
 export const BanxicoAppContext = createContext({})
 
@@ -9,9 +9,9 @@ export function BanxicoAppProvider({ children }) {
     isError: false,
   })
 
-  const handleDataSubmit = (data) => {
+  const handleDataSubmit = useCallback((data) => {
     setSeries(data)
-  }
+  }, [])
 
   return (
     <BanxicoAppContext.Provider

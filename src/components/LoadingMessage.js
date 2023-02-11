@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-export const LoadingMessage = () => {
+const LoadingMessage = () => {
   return (
     <div
       className={clsx(
@@ -11,3 +11,5 @@ export const LoadingMessage = () => {
     </div>
   )
 }
+
+export default LoadingMessage

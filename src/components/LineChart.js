@@ -1,9 +1,10 @@
+import React from 'react'
 import { Line } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
 
 Chart.register(...registerables)
 
-export const LineChart = ({ data }) => {
+const LineChart = React.memo(function LineChart({ data }) {
   const dataConfig = {
     labels: data?.datos?.map((dato) => dato?.fecha),
     datasets: [
@@ -33,4 +34,6 @@ export const LineChart = ({ data }) => {
       />
     </div>
   )
-}
+})
+
+export default LineChart

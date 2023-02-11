@@ -1,9 +1,10 @@
+import React from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
 
 Chart.register(...registerables)
 
-export const BarChart = ({ data }) => {
+const BarChart = React.memo(function BarChart({ data }) {
   const dataConfig = {
     labels: data?.datos?.map((dato) => dato?.fecha),
     datasets: [
@@ -32,4 +33,6 @@ export const BarChart = ({ data }) => {
       />
     </div>
   )
-}
+})
+
+export default BarChart
