@@ -9,8 +9,8 @@ export const BarChart = ({ data }) => {
     datasets: [
       {
         label: data?.titulo,
-        backgroundColor: 'rgb(40,149,250)',
-        borderColor: 'rgb(40,149,250)',
+        backgroundColor: 'rgb(3,105,161)',
+        borderColor: 'rgb(3,105,161)',
         borderWidth: 1,
         hoverBackgroundColor: 'rgb(40,149,250)',
         hoverBorderColor: 'rgb(40,149,250)',
