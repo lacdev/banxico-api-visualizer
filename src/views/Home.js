@@ -14,9 +14,11 @@ function Home() {
       <nav className={clsx('pb-4 font-medium border-sky-700 m-4')}>
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? clsx('text-3xl mr-4 text-sky-700 border-b-2 border-sky-700')
-              : clsx('text-3xl font-normal mr-4 text-gray-600')
+            clsx(
+              isActive
+                ? 'text-3xl mr-4 text-sky-700 border-b-2 border-sky-700'
+                : 'text-3xl font-normal mr-4 text-gray-600'
+            )
           }
           to="/"
         >
@@ -24,9 +26,11 @@ function Home() {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? clsx('text-3xl mr-4 text-sky-700 border-b-2 border-sky-700')
-              : clsx('text-3xl font-normal mr-4 text-gray-600')
+            clsx(
+              isActive
+                ? 'text-3xl mr-4 text-sky-700 border-b-2 border-sky-700'
+                : 'text-3xl font-normal mr-4 text-gray-600'
+            )
           }
           to="/visualizer"
         >
