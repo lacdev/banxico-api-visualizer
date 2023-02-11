@@ -1,15 +1,16 @@
-export const ErrorMessage = () => {
-  const classes = {
-    errorMessage:
-      'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-700 m-4',
-  }
+import clsx from 'clsx'
 
+export const ErrorMessage = () => {
   return (
-    <div className={classes.errorMessage}>
-      <p>Hubo un error al intentar buscar la información.</p>
+    <div
+      className={clsx(
+        'text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-700 m-4'
+      )}
+    >
       <p>
-        Por favor, revisa que tu token y tus series estén en el formato
-        correcto.
+        There was an error trying to fetch the information. <br></br>
+        Please check that your Banxico token and your series are in the correct
+        format.
       </p>
     </div>
   )

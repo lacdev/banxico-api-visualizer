@@ -1,5 +1,6 @@
 import { Bar } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
+
 Chart.register(...registerables)
 
 export const BarChart = ({ data }) => {
