@@ -4,7 +4,7 @@ import { SeriesContainer } from 'components/SeriesContainer'
 import { LineChart } from 'components/LineChart'
 import { ErrorMessage } from 'components/ErrorMessage'
 import { LoadingMessage } from 'components/LoadingMessage'
-import { Form } from 'components/Form'
+import { Form } from 'components/Form/Form'
 
 import { useBanxicoAppContext } from '../hooks/useBanxicoAppContext'
 
