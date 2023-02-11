@@ -1,25 +1,26 @@
+import React from 'react'
 import clsx from 'clsx'
 
 import { useBanxicoAppContext } from '../../hooks/useBanxicoAppContext'
 
 import { useSeriesForm } from './hooks/useSeriesForm'
 
-export const Form = () => {
+const Form = React.memo(function Form() {
   const { handleDataSubmit } = useBanxicoAppContext()
 
   const {
     banxicoToken,
+    handleFormSubmit,
     seriesToFetch,
-    handleBanxicoTokenInputChange,
-    handleBanxicoBlur,
+    handleBanxicoInputChange,
+    handleBanxicoInputBlur,
     handleSeriesInputChange,
-    handleSeriesBlur,
-    handleSubmit,
+    handleSeriesInputBlur,
   } = useSeriesForm({ onSubmit: handleDataSubmit })
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleFormSubmit}
       className={clsx(
         'border flex flex-col gap-4 max-w-4xl p-4  rounded-lg m-4 shadow-lg'
       )}
@@ -39,8 +40,8 @@ export const Form = () => {
         required
         id="token"
         value={banxicoToken?.value}
-        onChange={handleBanxicoTokenInputChange}
-        onBlur={handleBanxicoBlur}
+        onChange={handleBanxicoInputChange}
+        onBlur={handleBanxicoInputBlur}
       />
 
       {banxicoToken.value.length === 0 && banxicoToken.touched && (
@@ -65,7 +66,7 @@ export const Form = () => {
         id="series"
         value={seriesToFetch?.value}
         onChange={handleSeriesInputChange}
-        onBlur={handleSeriesBlur}
+        onBlur={handleSeriesInputBlur}
       />
 
       {seriesToFetch.value.length === 0 && seriesToFetch.touched && (
@@ -85,4 +86,6 @@ export const Form = () => {
       </button>
     </form>
   )
-}
+})
+
+export default Form

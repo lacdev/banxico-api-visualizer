@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-export const ErrorMessage = () => {
+const ErrorMessage = () => {
   return (
     <div
       className={clsx(
@@ -15,3 +15,5 @@ export const ErrorMessage = () => {
     </div>
   )
 }
+
+export default ErrorMessage
