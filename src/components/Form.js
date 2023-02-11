@@ -1,61 +1,36 @@
-import { useState } from 'react'
 import clsx from 'clsx'
 
 import { getSeries } from 'api/seriesAPI'
 
-export const Form = ({ onSubmit }) => {
-  const [banxicoToken, setBanxicoToken] = useState({
-    value: '',
-    touched: false,
-  })
+import { useBanxicoAppContext } from '../hooks/useBanxicoAppContext'
 
-  const [seriesToFetch, setSeriesToFetch] = useState({
-    value: '',
-    touched: false,
-  })
-
-  const handleBanxicoTokenInputChange = (event) => {
-    let nextValue = event.target.value.replaceAll(' ', '')
-
-    setBanxicoToken((currentVal) => ({
-      ...currentVal,
-      value: nextValue,
-    }))
-  }
-
-  const handleSeriesInputChange = (event) => {
-    let nextValue = event.target.value.replaceAll(' ', '')
-
-    setSeriesToFetch((currentVal) => ({
-      ...currentVal,
-      value: nextValue,
-    }))
-  }
-
-  const handleBanxicoBlur = () => {
-    setBanxicoToken((currentVal) => ({ ...currentVal, touched: true }))
-  }
-
-  const handleSeriesBlur = () => {
-    setSeriesToFetch((currentVal) => ({ ...currentVal, touched: true }))
-  }
+export const Form = () => {
+  const {
+    banxicoToken,
+    seriesToFetch,
+    handleBanxicoTokenInputChange,
+    handleSeriesInputChange,
+    handleBanxicoBlur,
+    handleSeriesBlur,
+    handleDataSubmit,
+  } = useBanxicoAppContext()
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault()
 
-      onSubmit((prev) => ({ ...prev, isError: false, isLoading: true }))
+      handleDataSubmit((prev) => ({ ...prev, isError: false, isLoading: true }))
 
       const { data } = await getSeries(
         seriesToFetch?.value,
         banxicoToken?.value
       )
 
-      onSubmit((prev) => ({ ...prev, data: data?.bmx?.series }))
+      handleDataSubmit((prev) => ({ ...prev, data: data?.bmx?.series }))
     } catch {
-      onSubmit((prev) => ({ ...prev, isError: true }))
+      handleDataSubmit((prev) => ({ ...prev, isError: true }))
     } finally {
-      onSubmit((prev) => ({ ...prev, isLoading: false }))
+      handleDataSubmit((prev) => ({ ...prev, isLoading: false }))
     }
   }
 
@@ -67,7 +42,7 @@ export const Form = ({ onSubmit }) => {
       )}
     >
       <label
-        className={clsx('block text-gray-700 text-md font-semibold mb-1')}
+        className={clsx('block text-gray-700 text-md font-semibold ')}
         htmlFor="token"
       >
         Banxico Token
@@ -92,7 +67,7 @@ export const Form = ({ onSubmit }) => {
       )}
 
       <label
-        className={clsx('block text-gray-700 text-md font-semibold mb-1')}
+        className={clsx('block text-gray-700 text-md font-semibold')}
         htmlFor="series"
       >
         Series
@@ -122,7 +97,6 @@ export const Form = ({ onSubmit }) => {
           'p-2 w-28 mt-1 cursor-pointer  border-sky-700 text-white bg-sky-700 font-semibold rounded-md'
         )}
         type="submit"
-        onClick={onSubmit}
       >
         Fetch Series
       </button>

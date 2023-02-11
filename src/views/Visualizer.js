@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import clsx from 'clsx'
 
 import { SeriesContainer } from 'components/SeriesContainer'
@@ -7,20 +6,14 @@ import { ErrorMessage } from 'components/ErrorMessage'
 import { LoadingMessage } from 'components/LoadingMessage'
 import { Form } from 'components/Form'
 
-export default function Visualizer() {
-  const [series, setSeries] = useState({
-    data: [],
-    isLoading: false,
-    isError: false,
-  })
+import { useBanxicoAppContext } from '../hooks/useBanxicoAppContext'
 
-  const handleSubmit = (data) => {
-    setSeries(data)
-  }
+export default function Visualizer() {
+  const { series } = useBanxicoAppContext()
 
   return (
     <main className={clsx('p-2')}>
-      <Form onSubmit={handleSubmit} />
+      <Form />
       {series.isError && <ErrorMessage />}
       {series.isLoading && <LoadingMessage />}
       {!series.isLoading && !series.isError && (
