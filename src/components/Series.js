@@ -17,13 +17,15 @@ const Series = React.memo(function Series() {
       {series.isLoading && <LoadingMessage />}
       {!series.isLoading && !series.isError && (
         <>
-          <h3
-            className={clsx(
-              'text-center font-semibold text-sky-700 text-3xl p-8'
-            )}
-          >
-            Time series information
-          </h3>
+          {series.data.length > 0 && (
+            <h3
+              className={clsx(
+                'text-center font-semibold text-sky-700 text-3xl p-8'
+              )}
+            >
+              Time series information
+            </h3>
+          )}
           <SeriesContainer>
             {series.data?.map((data) => (
               <LineChart key={data?.idSerie} data={data} />
